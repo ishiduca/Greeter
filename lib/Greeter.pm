@@ -5,7 +5,33 @@ use warnings;
 
 our $VERSION = "0.01";
 
+use DateTime;
 
+sub new {
+    my $class = shift;
+
+    bless +{
+        time_zone => 'Asia/Tokyo',
+        greets => ['Good Morning', 'Good Afternoon', 'Good Evening'],
+    } => $class;
+};
+
+sub greet {
+    my $self = shift;
+    my $now  = DateTime->now( time_zone => $self->{time_zone} );
+
+    $self->{greets}[ $self->_get_greets_index($now) ];
+}
+
+sub _get_greets_index {
+    my $self = shift;
+    my $now  = shift;
+    my $time = $now->hour * 60 + $now->minute;
+
+    $time >= (18 * 60) ? 2 :
+    $time >= (12 * 60) ? 1 :
+    $time >= ( 5 * 60) ? 0 : 2;
+};
 
 1;
 __END__
@@ -19,6 +45,9 @@ Greeter - It's new $module
 =head1 SYNOPSIS
 
     use Greeter;
+
+    my $greeter = Greeter->new;
+    say $greeter->greet # when 06:01:23 => Good Morning
 
 =head1 DESCRIPTION
 

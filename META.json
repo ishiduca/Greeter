@@ -43,15 +43,28 @@
       },
       "runtime" : {
          "requires" : {
+            "DateTime" : "1.06",
             "perl" : "5.008005"
          }
       },
       "test" : {
          "requires" : {
+            "Test::MockDateTime" : "0.02",
             "Test::More" : "0.98"
          }
       }
    },
    "release_status" : "unstable",
+   "resources" : {
+      "bugtracker" : {
+         "web" : "https://github.com/ishiduca/Greeter/issues"
+      },
+      "homepage" : "https://github.com/ishiduca/Greeter",
+      "repository" : {
+         "type" : "git",
+         "url" : "git://github.com/ishiduca/Greeter.git",
+         "web" : "https://github.com/ishiduca/Greeter"
+      }
+   },
    "version" : "0.01"
 }

@@ -6,6 +6,9 @@ Greeter - It's new $module
 
     use Greeter;
 
+    my $greeter = Greeter->new;
+    say $greeter->greet # when 06:01:23 => Good Morning
+
 # DESCRIPTION
 
 Greeter is ...
